@@ -19,10 +19,10 @@ def Absolute_Distance(a,b,c,d):
 	haversine_d = 6371 * haversine_c
 	return haversine_d
 
-City1 = str(raw_input("Enter Name of Origin City:"))
-City2 = str(raw_input("Enter Name of Destination City:"))
+Location1 = str(raw_input("Enter Name of Origin Location:"))
+Location2 = str(raw_input("Enter Name of Destination Location:"))
 
-dist_matrix = maps_client.distance_matrix(City1, City2)
+dist_matrix = maps_client.distance_matrix(Location1, Location2)
 
 print dist_matrix[u'rows'][0][u'elements'][0][u'distance'][u'text']
 
