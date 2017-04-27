@@ -24,5 +24,15 @@ Location2 = str(raw_input("Enter Name of Destination Location:"))
 
 dist_matrix = maps_client.distance_matrix(Location1, Location2)
 
-print dist_matrix[u'rows'][0][u'elements'][0][u'distance'][u'text']
+if dist_matrix[u'rows'][0][u'elements'][0][u'status'] == "ZERO_RESULTS":
+	lat_long1 = maps_client.geocode(Location1)
+	lat_long2 = maps_client.geocode(Location2)
+	latitude_loc1 = lat_long1[0][u'geometry'][u'location'][u'lat']
+	longitude_loc1 = lat_long1[0][u'geometry'][u'location'][u'lng']
+	latitude_loc2 = lat_long2[0][u'geometry'][u'location'][u'lat']
+	longitude_loc2 = lat_long2[0][u'geometry'][u'location'][u'lng']
+	print "The cities in your query do not have a direct land route. However, the approximate as-the-crow-flies distance between these locations is:" + " " + str('%0.2f'%Absolute_Distance(latitude_loc1,latitude_loc2,longitude_loc1,longitude_loc2))	+ "km"
+else:
+	print dist_matrix[u'rows'][0][u'elements'][0][u'distance'][u'text']
+	
 
