@@ -40,7 +40,7 @@ if Location1 != ""  and Location2 != "": 									#Values can only be computed i
 				longitude_loc2 = lat_long2[0][u'geometry'][u'location'][u'lng']				#index to the exact location where the relevant information is
 				print "The cities in your query do not have a direct land route. However, the approximate as-the-crow-flies distance between these locations is:" + " " + str('%0.2f'%Absolute_Distance(latitude_loc1,latitude_loc2,longitude_loc1,longitude_loc2))	+ "km"
 			else:
-				print dist_matrix[u'rows'][0][u'elements'][0][u'distance'][u'text']			#indexing the exact location to print the result of distance between two locations
+				print "The Distance between the entered locations is" + " " + str(dist_matrix[u'rows'][0][u'elements'][0][u'distance'][u'text'])			#indexing the exact location to print the result of distance between two locations
 		except IndexError: 
 			print "At least one search query could not be found. Please check the names for cities you have entered and try again."
 		except KeyError: 
